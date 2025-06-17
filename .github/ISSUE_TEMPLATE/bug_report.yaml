@@ -1,0 +1,78 @@
+name: 🐞 Bug Report
+description: Help improve OpenLoom by reporting a bug
+title: "[Bug] <Short bug summary>"
+labels: ["bug"]
+assignees:
+  - raghul-tech
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🐛 Thanks for helping us improve OpenLoom!
+        Please fill out the details below to report a bug clearly.
+
+  - type: input
+    id: environment
+    attributes:
+      label: 💻 Environment
+      description: Tell us about your system and setup
+      placeholder: "e.g. Windows 11, Java 17, OpenLoom 0.0.1"
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: 😕 What went wrong?
+      description: Describe the problem or error clearly.
+      placeholder: "Example: When I read a large file, it throws an exception."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 🧪 Steps to Reproduce
+      description: List the steps to see the bug.
+      placeholder: |
+        Example:
+        1. Create a 50MB file
+        2. Use `readAsync()` on it
+        3. See the error in the output
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: ✅ What should have happened?
+      description: Describe what you expected instead.
+      placeholder: "I expected the file to be read without any errors."
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 📄 Error Message or Logs (optional)
+      description: Paste any error message or stack trace if you have it.
+      render: shell
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 📸 Screenshot (optional)
+      description: Add a screenshot if it helps explain the issue.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: ✅ Before submitting...
+      options:
+        - label: I checked for [existing issues](https://github.com/raghul-tech/OpenLoom/issues)
+          required: true
+        - label: I’m using the **latest version** of OpenLoom
+          required: true
+        - label: I provided all required information
+          required: true
