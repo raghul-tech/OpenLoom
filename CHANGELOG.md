@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.0.2] — 2025-06-19
+
+### 🛠️ Improvements
+
+- ✅ Added `<packaging>jar</packaging>` to `pom.xml` for proper artifact packaging
+- 📦 OpenLoom is now downloaded as a `.jar` dependency instead of a folder
+- 🧹 Minor internal cleanup for smoother Maven Central consumption
+
+🔧 *No functional changes or new features introduced in this release.*
+
+---
+
+
 ## [0.0.1] - 2025-06-17
 
 ### 🚀 Initial Release

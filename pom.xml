@@ -5,14 +5,13 @@
 
   <groupId>io.github.raghul-tech</groupId>
   <artifactId>openloom</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
+  <packaging>jar</packaging>
   <name>OpenLoom</name>
   <description>
-  OpenLoom is a lightweight, high-performance Java library for adaptive and scalable file reading. 
-  It supports reading files of any size—small, large, or huge—using optimized strategies like 
-  buffered streams, NIO channels, and memory-mapped files. OpenLoom also provides asynchronous 
-  file reading and efficient line-by-line streaming using functional consumers. Ideal for developers 
-  building text editors, data processors, or any application requiring flexible and efficient text file handling.
+ OpenLoom is a lightweight, high-performance Java library built for fast and adaptive file reading. It intelligently selects the best I/O strategy—BufferedReader, NIO, or Memory-Mapped—for files of any size. With built-in asynchronous support, line-by-line streaming, and multi-charset compatibility, OpenLoom helps developers read and process text files with ease.
+
+This release improves artifact structure, ensuring better integration in Maven-based projects and IDEs. Great for building tools like editors, analyzers, and data parsers.
 </description>
 
   <url>https://github.com/raghul-tech/OpenLoom</url>

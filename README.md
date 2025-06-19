@@ -18,8 +18,8 @@
   <a href="https://github.com/raghul-tech/OpenLoom/actions/workflows/codeql.yml">
     <img src="https://img.shields.io/github/actions/workflow/status/raghul-tech/OpenLoom/codeql.yml?label=CodeQL&style=for-the-badge&color=informational" alt="CodeQL Security" />
   </a>
-  <a href="https://javadoc.io/doc/io.github.raghul-tech/openloom/0.0.1">
-    <img src="https://img.shields.io/badge/Javadoc-0.0.1-blue?style=for-the-badge&logo=java" alt="Javadoc" />
+  <a href="https://javadoc.io/doc/io.github.raghul-tech/openloom/0.0.2">
+    <img src="https://img.shields.io/badge/Javadoc-0.0.2-blue?style=for-the-badge&logo=java" alt="Javadoc" />
   </a>
   <a href="https://github.com/raghul-tech/OpenLoom/releases">
     <img src="https://img.shields.io/github/release/raghul-tech/OpenLoom?label=Release&style=for-the-badge&color=success" alt="Latest Release" />
@@ -60,13 +60,13 @@
 <dependency>
   <groupId>io.github.raghul-tech</groupId>
   <artifactId>openloom</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
 </dependency>
 ```
 
 ### Gradle
 ```groovy
-implementation 'io.github.raghul-tech:openloom:0.0.1'
+implementation 'io.github.raghul-tech:openloom:0.0.2'
 ```
 
 ---
@@ -121,18 +121,18 @@ reader.setCharset(StandardCharsets.UTF_16);
 ### **🧵 Compile:**
 
 ```bash
-javac -cp openloom-0.0.1.jar ReadExampleWithFile.java
+javac -cp openloom-0.0.2.jar ReadExampleWithFile.java
 ```
 ### **▶️ Run:**
 
 > Windows:
 ```bash
-java -cp .;openloom-0.0.1.jar ReadExampleWithFile   
+java -cp .;openloom-0.0.2.jar ReadExampleWithFile   
 ```
 
 > Linux/macOS:
 ```bash
-java -cp .:openloom-0.0.1.jar ReadExampleWithFile   
+java -cp .:openloom-0.0.2.jar ReadExampleWithFile   
 ```
 ---
 
