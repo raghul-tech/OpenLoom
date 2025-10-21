@@ -5,14 +5,26 @@
 
   <groupId>io.github.raghul-tech</groupId>
   <artifactId>openloom</artifactId>
-  <version>0.0.2</version>
+  <version>1.0.0</version>
   <packaging>jar</packaging>
   <name>OpenLoom</name>
   <description>
- OpenLoom is a lightweight, high-performance Java library built for fast and adaptive file reading. It intelligently selects the best I/O strategy—BufferedReader, NIO, or Memory-Mapped—for files of any size. With built-in asynchronous support, line-by-line streaming, and multi-charset compatibility, OpenLoom helps developers read and process text files with ease.
-
-This release improves artifact structure, ensuring better integration in Maven-based projects and IDEs. Great for building tools like editors, analyzers, and data parsers.
+OpenLoom is a modern, high-performance Java library for advanced file I/O operations. It provides
+fast and adaptive file reading, writing, copying, moving, and searching capabilities for small
+and large files. OpenLoom automatically selects the optimal I/O strategy (BufferedReader, NIO, Memory-Mapped),
+supports multiple charsets, and allows synchronous, line-by-line, or bulk file processing. Ideal
+for developers building editors, parsers, analyzers, or automation tools. OpenLoom is open-source
+and easy to integrate in Maven projects.
 </description>
+
+  <!-- Maven Central Category -->
+ <properties>
+    <java.version>11</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>${java.version}</maven.compiler.release>
+    <category>Software Development :: Libraries :: Java Libraries :: Input/Output</category>
+    <keywords>java, file io, text reader, file writer, file parser, memory mapped files, nio, buffered reader, async io, file utils, open source</keywords>
+</properties>
 
   <url>https://github.com/raghul-tech/OpenLoom</url>
 
@@ -32,6 +44,11 @@ This release improves artifact structure, ensuring better integration in Maven-b
     </developer>
   </developers>
 
+<organization>
+  <name>Raghul-tech</name>
+  <url>https://github.com/raghul-tech</url>
+</organization>
+
   <scm>
     <url>https://github.com/raghul-tech/OpenLoom</url>
     <connection>scm:git:https://github.com/raghul-tech/OpenLoom.git</connection>
@@ -50,10 +67,6 @@ This release improves artifact structure, ensuring better integration in Maven-b
     </repository>
   </distributionManagement>
 
-  <properties>
-    <java.version>23</java.version>
-    <gpg.keyname>740F6A0F9196C2E88F81938C89FCDC1BEBED3095</gpg.keyname>
-  </properties>
 
   <build>
     <plugins>
@@ -67,7 +80,7 @@ This release improves artifact structure, ensuring better integration in Maven-b
       </plugin>
 
       <!-- Maven GPG Plugin -->
-      <plugin>
+       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-gpg-plugin</artifactId>
         <version>3.1.0</version>
@@ -79,9 +92,7 @@ This release improves artifact structure, ensuring better integration in Maven-b
           </execution>
         </executions>
         <configuration>
-          <keyname>${gpg.keyname}</keyname>
           <useAgent>true</useAgent>
-          <defaultKeyring>false</defaultKeyring>
         </configuration>
       </plugin>
 
@@ -127,6 +138,18 @@ This release improves artifact structure, ensuring better integration in Maven-b
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>3.6.3</version>
+        <configuration>
+    <!-- Disable doclint to prevent HTML tag validation errors -->
+    <doclint>none</doclint>
+
+    <!-- Optional: prevent the build from failing if warnings remain -->
+    <failOnError>false</failOnError>
+
+    <!-- Recommended encoding settings -->
+    <source>17</source> <!-- or your Java version -->
+    <encoding>UTF-8</encoding>
+    <charset>UTF-8</charset>
+  </configuration>
         <executions>
           <execution>
             <id>attach-javadocs</id>

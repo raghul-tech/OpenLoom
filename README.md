@@ -1,15 +1,15 @@
-<h1 align="center">🧵 OpenLoom</h1>
+<h1 align="center">🧵 OpenLoom - Modern Java File I/O Library</h1>
 
 <p align="center">
-  <em>The intelligent file reader for Java — blazing fast, zero config, and async-ready.</em>
+  <em>Lightweight, dependency-free Java file I/O toolkit for reading, writing, searching, and managing files efficiently.</em>
 </p>
 
 <p align="center">
-  <strong>🔍 Read any file. 🧠 Choose the best method. 🚀 Perform like a pro.</strong>
+  <strong>📂 File Reading • ✍️ File Writing • 🔍 Text Search • 📁 File Management • ⚡ High Performance</strong>
 </p>
 
 <p align="center">
-  <a href="https://central.sonatype.com/artifact/io.github.raghul-tech/openloom">
+  <a href="https://mvnrepository.com/artifact/io.github.raghul-tech/openloom">
     <img src="https://img.shields.io/maven-central/v/io.github.raghul-tech/openloom?style=for-the-badge&color=blueviolet" alt="Maven Central" />
   </a>
   <a href="https://github.com/raghul-tech/OpenLoom/actions/workflows/maven.yml">
@@ -18,8 +18,8 @@
   <a href="https://github.com/raghul-tech/OpenLoom/actions/workflows/codeql.yml">
     <img src="https://img.shields.io/github/actions/workflow/status/raghul-tech/OpenLoom/codeql.yml?label=CodeQL&style=for-the-badge&color=informational" alt="CodeQL Security" />
   </a>
-  <a href="https://javadoc.io/doc/io.github.raghul-tech/openloom/0.0.2">
-    <img src="https://img.shields.io/badge/Javadoc-0.0.2-blue?style=for-the-badge&logo=java" alt="Javadoc" />
+  <a href="https://javadoc.io/doc/io.github.raghul-tech/openloom">
+    <img src="https://img.shields.io/badge/Javadoc-1.0.0-blue?style=for-the-badge&logo=java" alt="Javadoc" />
   </a>
   <a href="https://github.com/raghul-tech/OpenLoom/releases">
     <img src="https://img.shields.io/github/release/raghul-tech/OpenLoom?label=Release&style=for-the-badge&color=success" alt="Latest Release" />
@@ -31,25 +31,85 @@
 
 ---
 
-## ✨ Why Use OpenLoom?
+## 🎯 Why Developers Choose OpenLoom
 
-✅ **Zero Config** – Just drop in and start reading files.  
-✅ **Adaptive Engine** – Chooses the best reading method based on file size.  
-✅ **Built-in Async** – Boost performance with `CompletableFuture`.  
-✅ **Stream-Friendly** – Sync & async line streaming.  
-✅ **Charset Control** – Easily switch encodings.  
-✅ **Lightweight** – Minimal dependencies, fast and focused.
+### 🚀 **Modern API Design**
+- **Single entry point** - No more searching through multiple utility classes
+- **Fluent interface** - Chain operations naturally
+- **Consistent naming** - Intuitive method names that make sense
+
+### 📦 **Zero Dependency Architecture**
+- **Pure Java 11+** - No external dependencies to manage
+- **Lightweight footprint** - Minimal impact on your project
+- **Easy updates** - No dependency conflicts or version hell
+
+### 🔍 **Advanced Search Capabilities**
+- **Regex-powered search** with range limitations
+- **Line-level operations** - insert, delete, modify specific lines
+- **Safe mode operations** - automatic backups before modifications
+
+### ⚡ **Performance Optimized**
+- **Memory-mapped I/O** for large file handling
+- **Customizable buffers** for optimal memory usage
+- **Efficient algorithms** for fast search and replace operations
+
+### 🛡️ **Built-in Safety**
+- **Recursion protection** - prevents accidental directory loops
+- **Comprehensive validation** - catch errors before they happen
+- **Detailed error messages** - know exactly what went wrong
 
 ---
 
-## 🚀 Features
+## ⚡ Quick Start
 
-- 📄 Read text files into memory (`StringBuilder`)
-- 🤖 Automatically chooses efficient read strategy (Buffered, NIO, Mapped)
-- ⏱️ Read files asynchronously
-- 📥 Line-by-line streaming (sync & async)
-- 🌍 Support for multiple charsets (UTF-8, ISO-8859-1, UTF-16 etc.)
-- 🧪 Simple API ideal for logging, parsing, and file analysis
+```java
+import io.github.raghultech.openloom.OpenLoom;
+import java.io.File;
+import java.util.List; 
+import java.util.Map;   
+
+public class QuickStart {
+    public static void main(String[] args) {
+        OpenLoom loom = new OpenLoom();
+        
+        // Read files with automatic encoding detection
+        String content = loom.read().read(new File("data.txt"));
+        
+        // Write files with safe operations
+        loom.write().write(new File("output.txt"), "Hello OpenLoom!");
+        
+        // Advanced text search with regex support
+        List<String> results = loom.search().findLineRegex(new File("log.txt"), "ERROR.*");
+        
+        // File management with recursion protection
+        loom.file().copyDir(new File("source"), new File("backup"), true);
+    }
+}
+```
+
+
+---
+
+## 🚀 Features Overview
+
+| Category | Description |
+|-----------|--------------|
+| 🧠 **ReadManager** | Read text, metadata, and structured columns with custom buffer size |
+| ✍️ **WriteManager** | Write and append, with small and large files safely |
+| 🔍 **SearchManager** | Find, modify, replace, delete, or insert lines with regex support and safe modes |
+| 📂 **FileManager** | Copy, move, create, and delete files or directories |
+
+---
+
+## 🎯 Solve Common Java File I/O Challenges
+
+| Problem | Traditional Solution | OpenLoom Solution |
+|---------|---------------------|-------------------|
+| **Complex file search** | Manual loops + regex | `findLineRegex()` + `findLineRegexInRange()` |
+| **Safe file modifications** | Manual backup creation | `replaceTextSafe()` auto-backup |
+| **Multiple utility classes** | Apache Commons IO + custom code | Single `OpenLoom` entry point |
+| **Dependency management** | Multiple JARs | **Zero dependencies** |
+| **Large file handling** | Complex memory management | `readMemoryMapped()` + `readInChunk()` |
 
 ---
 
@@ -60,59 +120,187 @@
 <dependency>
   <groupId>io.github.raghul-tech</groupId>
   <artifactId>openloom</artifactId>
-  <version>0.0.2</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
 ### Gradle
 ```groovy
-implementation 'io.github.raghul-tech:openloom:0.0.2'
+implementation 'io.github.raghul-tech:openloom:1.0.0'
 ```
 
 ---
 
-## ✍️ Usage Examples
-### 🔹 Basic File Read
-#### ➡️ BasicReadExample.java
+## 🚀 Complete Feature Set
+### 🧠 ReadManager - Comprehensive File Reading
 
 ```java
-OpenLoom reader = new OpenLoom();
-StringBuilder content = reader.read(new File("example.txt"));
-System.out.println(content);
+import io.github.raghultech.openloom.OpenLoom;
+import java.io.File;
+import java.util.List;
+import java.util.Map;
+
+public class ReadExample {
+    public static void main(String[] args) {
+        OpenLoom loom = new OpenLoom();
+		    // Text file reading with various strategies
+			String content = loom.read().read(file);                    // Auto strategy
+			String buffered = loom.read().readBuffered(file, 8192);    // Custom buffer
+			String fast = loom.read().readUsingChannel(file);          // NIO channels
+			
+			// Structured data extraction
+			List<String[]> columns = loom.read().readColumns(file, ",", new int[]{0, 2});
+			
+			// File metadata and properties
+			Map<String, Object> metadata = loom.read().readMetadata(file);
+			
+			// Stream processing for large files
+			loom.read().readLines(file, line -> processLine(line));
+    }
+}
+
 ```
 
-### 🔹 Read using Path
-#### ➡️ PathReadExample.java
+### ✍️ WriteManager - Reliable File Writing
 
 ```java
-StringBuilder content = reader.read(Paths.get("data/example.txt"));
+import io.github.raghultech.openloom.OpenLoom;
+import java.io.File;
+
+public class WriteExample {
+    public static void main(String[] args) {
+        OpenLoom loom = new OpenLoom();
+        
+        // Write new file
+        loom.write().write(new File("output.txt"), "Hello OpenLoom!");
+        
+        // Append to existing file
+        loom.write().append(new File("output.txt"), "\nAdditional content");
+        
+        // Write with custom bufferSize 
+        loom.write().write(new File("output.txt"), "New content",64*1024);
+        
+        // Write large files efficiently
+        loom.write().writeLarge(new File("bigfile.txt"), largeContent);
+    }
+}
 ```
-### 🔹 Async Read
-#### ➡️ AsyncReadExample.java
+### 🔍 SearchManager - Powerful Text Operations
 
 ```java
-reader.readAsync(new File("large.txt")).thenAccept(content -> {
-    System.out.println("First 100 chars: " + content.substring(0, 100));
+import io.github.raghultech.openloom.OpenLoom;
+import java.io.File;
+import java.util.List;
+
+public class SearchExample {
+    public static void main(String[] args) {
+        OpenLoom loom = new OpenLoom();
+        
+	// Flexible search operations
+	List<String> results = loom.search().findLine(file, "searchTerm");
+	List<String> rangeResults = loom.search().findLineInRange(file, "term", 10, 50);
+	
+	// Regex-powered search capabilities
+	List<String> regexResults = loom.search().findLineRegex(file, "pattern.*");
+	List<String> rangeRegex = loom.search().findLineRegexInRange(file, "pattern", 0, 100);
+	
+	// Content modification with precision
+	loom.search().replaceText(file, "old", "new");
+	loom.search().deleteLine(file, 5);
+	loom.search().insertLine(file, 3, "new content");
+	
+	// Safe operations with automatic backups
+	loom.search().replaceTextSafe(file, "old", "new");
+    }
+}
+```
+
+### 📂 FileManager - Robust File System Operations
+
+```java
+import io.github.raghultech.openloom.OpenLoom;
+import java.io.File;
+
+public class FileOpsExample {
+    public static void main(String[] args) {
+        OpenLoom loom = new OpenLoom();
+        
+        // Copy files
+        loom.file().copyFile(new File("input.txt"), new File("backup/input_copy.txt"));
+        
+        // Move files
+        loom.file().moveFile(new File("backup/input_copy.txt"), new File("moved/input.txt"));
+        
+        // Copy entire directories
+        loom.file().copyDir(new File("project"), new File("backup/project"), true);
+        
+        // Move directories
+        loom.file().moveDir(new File("old_location"), new File("new_location"), true);
+        
+        // Delete files and directories
+        loom.file().deleteFile(new File("temp.txt"));
+        loom.file().deleteDir(new File("old_backup"));
+    }
+}
+
+```
+
+## 💡 Ideal For These Use Cases
+### 🔧 Configuration Management Systems
+
+```java
+// Safely update application configurations
+OpenLoom loom = new OpenLoom();
+loom.search().replaceTextSafe(
+    new File("application.properties"), 
+    "database.url=localhost", 
+    "database.url=production-db"
+);
+```
+
+### 📊 Log Processing & Analysis
+
+```java
+// Extract insights from application logs
+List<String> errors = loom.search().findLineRegex(
+    new File("application.log"), 
+    "ERROR.*Exception"
+);
+
+// Process structured log files
+List<String[]> logEntries = loom.read().readColumns(
+    new File("access.log"), 
+    " ", 
+    new int[]{0, 3, 6} // timestamp, IP, status code
+);
+```
+
+## 🗂️ Data Migration & ETL Process
+
+```java
+// Bulk file operations for data pipelines
+loom.file().copyDir(
+    new File("/data/legacy-system"), 
+    new File("/data/modern-system"), 
+    true
+);
+
+// Process data files during migration
+List<String[]> customerData = loom.read().readColumns(
+    new File("customers.csv"), ",", 
+    new int[]{0, 1, 2} // ID, Name, Email
+);
+```
+
+## 📝 Document Processing Workflows
+
+```java
+// Large-scale text processing
+loom.read().readLines(new File("large-document.txt"), line -> {
+   if (!loom.search().findLineRegex(line, "confidential|secret").isEmpty()) {
+        processSensitiveLine(line);
+    }
 });
-```
-
-### 🔹 Stream Lines (Sync & Async)
-#### ➡️ StreamLineExample.java
-
-```java
-reader.streamLines(new File("log.txt"), System.out::println);
-reader.streamLinesAsync(Paths.get("errors.log"), line -> {
-    if (line.contains("ERROR")) System.err.println("Error line: " + line);
-});
-```
-
-### 🔹 Change Charset (Mid-execution)
-#### ➡️ CharsetExample.java
-
-```java
-OpenLoom reader = new OpenLoom(StandardCharsets.ISO_8859_1);
-StringBuilder content = reader.read(Paths.get("legacy.txt"));
-reader.setCharset(StandardCharsets.UTF_16);
 ```
 
 ---
@@ -121,48 +309,43 @@ reader.setCharset(StandardCharsets.UTF_16);
 ### **🧵 Compile:**
 
 ```bash
-javac -cp openloom-0.0.2.jar ReadExampleWithFile.java
+javac -cp openloom-1.0.0.jar ExampleRead.java
 ```
 ### **▶️ Run:**
 
 > Windows:
 ```bash
-java -cp .;openloom-0.0.2.jar ReadExampleWithFile   
+java -cp .;openloom-1.0.0.jar ExampleRead   
 ```
 
 > Linux/macOS:
 ```bash
-java -cp .:openloom-0.0.2.jar ReadExampleWithFile   
+java -cp .:openloom-1.0.0.jar ExampleRead   
 ```
----
-
-## 🧩 Requirements
-- Java 8 or above (JDK 17+ recommended)
-
 ---
 
 ## 📂 Example Files
 ### ✅ Ready-to-run examples in the [examples/](examples/) folder:
 
-- [ReadExampleWithFile.java](examples/ReadExampleWithFile.java)
+- [ExampleRead.java](examples/ExampleRead.java) - Comprehensive reading examples
 
-- [ReadExampleWithPath.java](examples/ReadExampleWithPath.java)
+- [ExampleWrite.java](examples/ExampleWrite.java) - Writing and appending patterns
 
-- [ReadAsyncExampleWithFile.java](examples/ReadAsyncExampleWithFile.java)
+- [ExampleSearch.java](examples/ExampleSearch.java) - Search and modification techniques
 
-- [ReadAsyncExampleWithPath.java](examples/ReadAsyncExampleWithPath.java)
-
-- [StreamLinesExampleWithFile.java](examples/StreamLinesExampleWithFile.java)
-
-- [StreamLinesExampleWithPath.java](examples/StreamLinesExampleWithPath.java)
-
-- [StreamLinesAsyncExampleWithFile.java](examples/StreamLinesAsyncExampleWithFile.java)
-
-- [StreamLinesAsyncExampleWithPath.java](examples/StreamLinesAsyncExampleWithPath.java)
-
-- [CharsetExample.java](examples/CharsetExample.java)
+- [ExampleFile.java](examples/ExampleFile.java) - File and directory operations
 
 ---
+
+## 🧩 Requirements
+- Java 11 or higher
+
+- Works on all major operating systems
+
+- No third-party dependencies
+
+---
+
 
 ## 🆕 Changelog:
 
@@ -209,5 +392,6 @@ Email: [raghultech.app@gmail.com](mailto:raghultech.app@gmail.com)
 
 <a href="https://buymeacoffee.com/raghultech"> <img src="https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-orange.svg?style=flat-square" alt="Buy Me A Coffee" /> </a> 
 
+---
 
-
+<p align="center"> <strong>Built with ❤️ for the Java Community</strong><br> <em>Making file I/O operations simple and efficient</em> </p>
