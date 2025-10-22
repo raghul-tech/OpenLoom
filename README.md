@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://mvnrepository.com/artifact/io.github.raghul-tech/openloom">
+  <a href="https://central.sonatype.com/artifact/io.github.raghul-tech/openloom">
     <img src="https://img.shields.io/maven-central/v/io.github.raghul-tech/openloom?style=for-the-badge&color=blueviolet" alt="Maven Central" />
   </a>
   <a href="https://github.com/raghul-tech/OpenLoom/actions/workflows/maven.yml">
@@ -64,6 +64,7 @@
 
 ```java
 import io.github.raghultech.openloom.OpenLoom;
+import io.github.raghultech.openloom.model.Match;
 import java.io.File;
 import java.util.List; 
 import java.util.Map;   
@@ -79,7 +80,7 @@ public class QuickStart {
         loom.write().write(new File("output.txt"), "Hello OpenLoom!");
         
         // Advanced text search with regex support
-        List<String> results = loom.search().findLineRegex(new File("log.txt"), "ERROR.*");
+        List<Match> results = loom.search().findLineRegex(new File("log.txt"), "ERROR.*");
         
         // File management with recursion protection
         loom.file().copyDir(new File("source"), new File("backup"), true);
@@ -189,6 +190,7 @@ public class WriteExample {
 
 ```java
 import io.github.raghultech.openloom.OpenLoom;
+import io.github.raghultech.openloom.model.Match;
 import java.io.File;
 import java.util.List;
 
@@ -197,12 +199,12 @@ public class SearchExample {
         OpenLoom loom = new OpenLoom();
         
 	// Flexible search operations
-	List<String> results = loom.search().findLine(file, "searchTerm");
-	List<String> rangeResults = loom.search().findLineInRange(file, "term", 10, 50);
+	List<Match> results = loom.search().findLine(file, "searchTerm");
+	List<Match> rangeResults = loom.search().findLineInRange(file, "term", 10, 50);
 	
 	// Regex-powered search capabilities
-	List<String> regexResults = loom.search().findLineRegex(file, "pattern.*");
-	List<String> rangeRegex = loom.search().findLineRegexInRange(file, "pattern", 0, 100);
+	List<Match> regexResults = loom.search().findLineRegex(file, "pattern.*");
+	List<Match> rangeRegex = loom.search().findLineRegexInRange(file, "pattern", 0, 100);
 	
 	// Content modification with precision
 	loom.search().replaceText(file, "old", "new");
@@ -262,7 +264,7 @@ loom.search().replaceTextSafe(
 
 ```java
 // Extract insights from application logs
-List<String> errors = loom.search().findLineRegex(
+List<Match> errors = loom.search().findLineRegex(
     new File("application.log"), 
     "ERROR.*Exception"
 );
